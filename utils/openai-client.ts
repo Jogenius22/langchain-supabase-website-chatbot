@@ -5,11 +5,11 @@ if (!process.env.OPENAI_API_KEY) {
 }
 
 export const openai = new OpenAI({
-  temperature: 0,
+  temperature: 0.7,
 });
 
 export const openaiStream = new OpenAI({
-  temperature: 0,
+  temperature: 0.7,
   streaming: true,
   callbackManager: {
     handleNewToken(token) {

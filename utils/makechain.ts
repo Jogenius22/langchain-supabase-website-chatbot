@@ -6,8 +6,7 @@ import { PromptTemplate } from 'langchain/prompts';
 const CONDENSE_PROMPT =
   PromptTemplate.fromTemplate(`Given the following conversation and a follow up question, rephrase the follow up question to be a standalone question.
 
-Chat History:
-{chat_history}
+Chat History: {chat_history}
 Follow Up Input: {question}
 Standalone question:`);
 
@@ -37,12 +36,12 @@ export const makeChain = (
   onTokenStream?: (token: string) => void,
 ) => {
   const questionGenerator = new LLMChain({
-    llm: new OpenAI({ temperature: 0 }),
+    llm: new OpenAI({ temperature: 0.7 }),
     prompt: CONDENSE_PROMPT,
   });
   const docChain = loadQAChain(
     new OpenAI({
-      temperature: 0,
+      temperature: 0.7,
       streaming: Boolean(onTokenStream),
       callbackManager: {
         handleNewToken: onTokenStream,

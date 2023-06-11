@@ -15,9 +15,9 @@ async function searchForDocs() {
   );
 
   /*uncomment below to test similarity search */
-  //   const results = await vectorStore.similaritySearch(query, 2);
+  const results = await vectorStore.similaritySearch(query, 2);
 
-  //   console.log("results", results);
+  console.log('results', results);
 
   const chain = VectorDBQAChain.fromLLM(model, vectorStore);
 
